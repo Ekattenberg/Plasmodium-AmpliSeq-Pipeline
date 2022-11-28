@@ -1,5 +1,5 @@
 # Plasmodium-AmpliSeq-Pipeline
-This github contains an in-house linux pipeline used for AmpliSeq alignment and variant calling for P. falciparum (Kattenberg et al. Microbiology Spectrum 2022) or P. vivax (Kattenberg et al. Front. Cell. Infect. Microbiol. 2022) AmpliSeq panels for molecular surveillance of malaria. The purpose of this repository is to be transparent in the data processing that was performed and to allow others to replicate the AmpliSeq data processing in the same way. 
+This github contains an in-house linux pipeline used for AmpliSeq alignment and variant calling for P. falciparum (Kattenberg et al. accepted for publication in Microbiology Spectrum) or P. vivax (Kattenberg et al. Front. Cell. Infect. Microbiol. 2022) AmpliSeq panels for molecular surveillance of malaria. The purpose of this repository is to be transparent in the data processing that was performed and to allow others to replicate the AmpliSeq data processing in the same way. 
 
 For more information on the NGS assay designs for which we used these pipelines, please see:
 1. Kattenberg JH, Fernandez-Miñope C, van Dijk NJ, Llacsahuanga Allcca L, Guetens P, Valdivia HO, et al. Malaria molecular surveillance in the Peruvian Amazon with novel highly multiplexed Plasmodium falciparum Ampliseq assay. medRxiv 2021, https://doi.org/10.1101/2021.11.12.21266245
