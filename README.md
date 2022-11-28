@@ -4,7 +4,7 @@ This github contains an in-house linux pipeline used for AmpliSeq alignment and 
 For more information on the NGS assay designs for which we used these pipelines, please see:
 1. Kattenberg JH, Fernandez-Miñope C, van Dijk NJ, Llacsahuanga Allcca L, Guetens P, Valdivia HO, et al. Malaria molecular surveillance in the Peruvian Amazon with novel highly multiplexed Plasmodium falciparum Ampliseq assay. medRxiv 2021, https://doi.org/10.1101/2021.11.12.21266245
 
-2. Kattenberg JH, Nguyen HV, Nguyen HL, Sauve E, Nguyen NTH, Chopo-Pizarro A, Trimarsanto H, Monsieurs P, Guetens P, Nguyen XX, Esbroeck MV, Auburn S, Nguyen BTH and Rosanas-Urgell A (2022) Novel highly-multiplexed AmpliSeq targeted assay for Plasmodium vivax genetic surveillance use cases at multiple geographical scales. Front. Cell. Infect. Microbiol. 12:953187. doi: 10.3389/fcimb.2022.953187
+2. Kattenberg JH, Nguyen HV, Nguyen HL, Sauve E, Nguyen NTH, Chopo-Pizarro A, Trimarsanto H, Monsieurs P, Guetens P, Nguyen XX, Esbroeck MV, Auburn S, Nguyen BTH and Rosanas-Urgell A (2022) Novel highly-multiplexed AmpliSeq targeted assay for Plasmodium vivax genetic surveillance use cases at multiple geographical scales. Front. Cell. Infect. Microbiol. 12:953187. https://doi.org/10.3389/fcimb.2022.953187
 
 We have different versions of the AmpliSeq Custom targeted sequencing assay, for P. falciparum and P. vivax. Currently, the scripts included here were those used for the Pf AmpliSeq for Peru and for the Pv AmpliSeq for Vietnam, which are described in the publications above. 
 
