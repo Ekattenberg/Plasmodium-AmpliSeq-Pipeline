@@ -1,0 +1,190 @@
+#!/bin/bash
+# Script to filter variants and do annotation for data from PV Vietnam Ampliseq
+#version 28/11/2022 E Kattenberg for github
+
+#set file paths:
+#1 to the folder with the demultiplexed fastq-files from the AMpliSeq sequencing reaction on MiSeq
+Thepathfq=/home/user/fq/
+#2 To the folder where the output will go
+Thepath=/home/user/project_name/
+
+#3. To the list of samples to include in the variantcalling
+samplelist=$Thepath/Sample_list_PV_VTN_experiment1.txt
+
+#set paths to programs
+sam=~/bin/samtools-1.9
+gatk=~/bin/gatk-4.1.2.0
+TMPDIR=/home/user/tmp
+
+#set path to reference genome  
+#this is not the latest version, but the one I used for the Pv AmpliSeq Vietnam data publised in Kattenberg et al. 2022 
+#You can update to latest version, download from PlasmoDB: https://plasmodb.org/plasmo/app/downloads/Current_Release/PvivaxP01/
+ref=/home/user/PvP01/PlasmoDB-46/PlasmoDB-46_PvivaxP01_Genome.fasta
+
+######################################
+#9. Filter vcf  					 #
+######################################
+
+#Go to the folder with the joint vcf file
+cd $Thepath/alignments/database
+
+#Subset to make sure the vcf includes only variants in the target region
+$gatk/gatk SelectVariants \
+-R $ref \
+-V VTN_Ampliseq_PV_Nov2022.vcf.gz \
+-O VTN_Ampliseq_PV_Nov2022_panel.vcf.gz \
+-L PvP01_01_v1:121120-121446 \
+-L PvP01_01_v1:164325-164650 \
+-L PvP01_01_v1:442168-445683 \
+-L PvP01_01_v1:671599-671928 \
+-L PvP01_02_v1:153713-158934 \
+-L PvP01_02_v1:197944-198259 \
+-L PvP01_02_v1:373468-373796 \
+-L PvP01_02_v1:594651-594975 \
+-L PvP01_03_v1:127832-128135 \
+-L PvP01_03_v1:220801-221130 \
+-L PvP01_03_v1:334581-334905 \
+-L PvP01_03_v1:552739-553924 \
+-L PvP01_03_v1:782109-782432 \
+-L PvP01_04_v1:420827-421155 \
+-L PvP01_04_v1:514823-515147 \
+-L PvP01_04_v1:885372-885697 \
+-L PvP01_05_v1:192353-192680 \
+-L PvP01_05_v1:451975-452280 \
+-L PvP01_05_v1:693386-693708 \
+-L PvP01_05_v1:701363-701690 \
+-L PvP01_05_v1:1077249-1079282 \
+-L PvP01_05_v1:1079319-1079539 \
+-L PvP01_05_v1:1285062-1285380 \
+-L PvP01_06_v1:45733-46061 \
+-L PvP01_06_v1:278016-278338 \
+-L PvP01_06_v1:646077-646399 \
+-L PvP01_06_v1:944634-944957 \
+-L PvP01_07_v1:260890-261212 \
+-L PvP01_07_v1:595121-595445 \
+-L PvP01_07_v1:754446-754775 \
+-L PvP01_07_v1:1020359-1020683 \
+-L PvP01_07_v1:1210982-1211301 \
+-L PvP01_08_v1:44930-45091 \
+-L PvP01_08_v1:53195-53514 \
+-L PvP01_08_v1:442285-442612 \
+-L PvP01_08_v1:878901-879225 \
+-L PvP01_08_v1:1420967-1421291 \
+-L PvP01_08_v1:1590968-1591291 \
+-L PvP01_09_v1:303127-303447 \
+-L PvP01_09_v1:448658-448978 \
+-L PvP01_09_v1:539199-539524 \
+-L PvP01_09_v1:1070335-1070662 \
+-L PvP01_09_v1:1101045-1101353 \
+-L PvP01_09_v1:1459281-1461078 \
+-L PvP01_09_v1:1838486-1838812 \
+-L PvP01_09_v1:1883812-1884132 \
+-L PvP01_10_v1:351609-351936 \
+-L PvP01_10_v1:478690-483160 \
+-L PvP01_10_v1:483513-483836 \
+-L PvP01_10_v1:523552-523876 \
+-L PvP01_10_v1:826080-831521 \
+-L PvP01_10_v1:1130890-1131215 \
+-L PvP01_10_v1:1385634-1385960 \
+-L PvP01_11_v1:159891-162171 \
+-L PvP01_11_v1:245545-245867 \
+-L PvP01_11_v1:383879-384206 \
+-L PvP01_11_v1:503806-504133 \
+-L PvP01_11_v1:720133-720439 \
+-L PvP01_11_v1:1137154-1137482 \
+-L PvP01_11_v1:1145107-1145430 \
+-L PvP01_11_v1:1226851-1227143 \
+-L PvP01_11_v1:1448738-1449062 \
+-L PvP01_11_v1:1867852-1868180 \
+-L PvP01_12_v1:94251-94573 \
+-L PvP01_12_v1:484766-487079 \
+-L PvP01_12_v1:844106-844430 \
+-L PvP01_12_v1:1116221-1116544 \
+-L PvP01_12_v1:1400006-1400335 \
+-L PvP01_12_v1:1462978-1463300 \
+-L PvP01_12_v1:1844773-1845096 \
+-L PvP01_12_v1:1988181-1988504 \
+-L PvP01_12_v1:2441294-2446380 \
+-L PvP01_13_v1:65981-66304 \
+-L PvP01_13_v1:162629-162913 \
+-L PvP01_13_v1:659361-659691 \
+-L PvP01_13_v1:1769965-1770289 \
+-L PvP01_14_v1:344814-345140 \
+-L PvP01_14_v1:743252-743582 \
+-L PvP01_14_v1:1160566-1160887 \
+-L PvP01_14_v1:1229330-1229655 \
+-L PvP01_14_v1:1258494-1258818 \
+-L PvP01_14_v1:1266125-1266440 \
+-L PvP01_14_v1:1269755-1272327 \
+-L PvP01_14_v1:1910971-1911297 \
+-L PvP01_14_v1:2051946-2058196 \
+-L PvP01_14_v1:3004151-3004474 
+
+
+#Hard Filtering variants
+#QUAl > 30
+$gatk/gatk VariantFiltration \
+   -R $ref \
+   -V VTN_Ampliseq_PV_Nov2022_panel.vcf.gz \
+   -O VTN_Ampliseq_PV_Nov2022_panelQUAL.vcf.gz \
+   --filter-name "QUAL" \
+   --filter-expression "QUAL < 30.00"
+
+#Overall DP > 500
+$gatk/gatk VariantFiltration \
+   -R $ref \
+   -V VTN_Ampliseq_PV_Nov2022_panelQUAL.vcf.gz \
+   -O VTN_Ampliseq_PV_Nov2022_panelQUALDP.vcf.gz \
+   --filter-name "DP500" \
+   --filter-expression "DP < 500" \
+
+#MQ 
+$gatk/gatk VariantFiltration \
+   -R $ref \
+   -V VTN_Ampliseq_PV_Nov2022_panelQUALDP.vcf.gz \
+   -O VTN_Ampliseq_PV_Nov2022_panelQUALDPMQ.vcf.gz \
+   --filter-name "MQ50" \
+   --filter-expression "MQ0 < 50" 
+
+#QD SOR ReadPosRankSum
+$gatk/gatk VariantFiltration \
+    -R $ref \
+    -V VTN_Ampliseq_PV_Nov2022_panelQUALDPMQ.vcf.gz \
+    -O VTN_Ampliseq_PV_Nov2022_panelQUALDPMQQDSOR.vcf.gz \
+    -filter "QD < 1.0" --filter-name "QD1" \
+    -filter "SOR > 4.0" --filter-name "SOR3" 
+
+#Note you could add a filter on the ReadPosRankSum as in the Pf script, but didnt use it for the publication
+
+#remove the variants that are filtered
+$gatk/gatk SelectVariants \
+-R $ref \
+-V VTN_Ampliseq_PV_Nov2022_panelQUALDPMQQDSOR.vcf.gz \
+--exclude-filtered \
+-O VTN_Ampliseq_PV_Nov2022_panel_filteredPASS.vcf.gz
+
+#### Filter on GT DP of 5 (on top of Qual 30 and DP 100)
+$gatk/gatk VariantFiltration \
+-R $ref \
+-V VTN_Ampliseq_PV_Nov2022_panel_filteredPASS.vcf.gz \
+-O VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5.vcf.gz \
+-G-filter-name "GTDP5" \
+-G-filter "DP < 6" \
+--set-filtered-genotype-to-no-call
+
+#############################
+#10. Annotation of variants	#
+#############################
+
+#annotate the variants using the program snpEff and dataset created with PlasmoDB PvP01 v46 (see manuals snpEff how to create a dataset for annotation with snpEff)
+java -Xmx4g -jar ~/snpEff/snpEff.jar -c ~/snpEff/snpEff.config -v Pvp01.v46 VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5.vcf.gz > VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5_ANN.vcf
+
+# Index the vcf and then compress the file
+$gatk/gatk IndexFeatureFile \
+-F VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5_ANN.vcf
+
+bgzip -c VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5_ANN.vcf > VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5_ANN.vcf.gz
+tabix -p vcf VTN_Ampliseq_PV_Nov2022_panel_filteredPASS_DP5_ANN.vcf.gz
+
+
+##END##
