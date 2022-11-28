@@ -16,7 +16,7 @@ In brief the different steps for the variant calling are given in 6 bash scripts
 - Script 5. Hard filtering variants and annotation
 - Script 6. Subsetting variants
 
-Several programs are required in order to run the scripts that should be downloaded and installed on your computer separately: 
+Several programs are required in order to run the scripts that should be downloaded elsewhere (see links) and installed on your computer: 
 - Burrows-Wheeler aligner: https://bio-bwa.sourceforge.net/
 - GATK 4: https://gatk.broadinstitute.org/
 - Picard tools: https://github.com/broadinstitute/picard
