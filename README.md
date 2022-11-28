@@ -9,12 +9,12 @@ For more information on the NGS assay designs for which we used these pipelines,
 We have different versions of the AmpliSeq Custom targeted sequencing assay, for P. falciparum and P. vivax. Currently, the scripts included here were those used for the Pf AmpliSeq for Peru and for the Pv AmpliSeq for Vietnam, which are described in the publications above. 
 
 In brief the different steps for the variant calling are given in 6 bash scripts:
-Script 1. Trimming poor quality reads and alignment, incl. quality and contamination analysis 
-Script 2. Variant calling with Haplotypecaller in gvcf mode
-Script 3. Joint genotyping
-Script 4. Alignment statistics 
-Script 5. Hard filtering variants and annotation
-Script 6. Subsetting variants
+- Script 1. Trimming poor quality reads and alignment, incl. quality and contamination analysis 
+- Script 2. Variant calling with Haplotypecaller in gvcf mode
+- Script 3. Joint genotyping
+- Script 4. Alignment statistics 
+- Script 5. Hard filtering variants and annotation
+- Script 6. Subsetting variants
 
 Several programs are required in order to run the scripts that should be downloaded and installed on your computer separately: 
 - Burrows-Wheeler aligner: https://bio-bwa.sourceforge.net/
