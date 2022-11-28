@@ -6,7 +6,7 @@ For more information on the NGS assay designs for which we used these pipelines,
 
 2. Kattenberg JH, Nguyen HV, Nguyen HL, Sauve E, Nguyen NTH, Chopo-Pizarro A, Trimarsanto H, Monsieurs P, Guetens P, Nguyen XX, Esbroeck MV, Auburn S, Nguyen BTH and Rosanas-Urgell A (2022) Novel highly-multiplexed AmpliSeq targeted assay for Plasmodium vivax genetic surveillance use cases at multiple geographical scales. Front. Cell. Infect. Microbiol. 12:953187. https://doi.org/10.3389/fcimb.2022.953187
 
-We have different versions of the AmpliSeq Custom targeted sequencing assay, for P. falciparum and P. vivax. Currently, the scripts included here were those used for the Pf AmpliSeq for Peru and for the Pv AmpliSeq for Vietnam, which are described in the publications above. The scripts can be found in the folders above 
+We have different versions of the AmpliSeq Custom targeted sequencing assay, for P. falciparum and P. vivax. Currently, the scripts included here were those used for the Pf AmpliSeq for Peru and for the Pv AmpliSeq for Vietnam, which are described in the publications. The scripts can be found in the folders at the top of the page. 
 
 In brief the different steps for the variant calling are given in 6 bash scripts:
 - Script 1. Trimming poor quality reads and alignment, incl. quality and contamination analysis 
